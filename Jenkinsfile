@@ -12,6 +12,7 @@ pipeline {
 	stages{
 		stage('Checkout'){
 			steps{
+				sh "java --version"
 				sh "mvn --version"
 				sh "docker version"
 				echo "Build"
@@ -34,7 +35,7 @@ pipeline {
 				sh "mvn test"
 			}
 		}
-		
+
 		stage('Integration Test'){
 			steps{
 				sh "mvn failsafe:integration-test failsafe:verify"
